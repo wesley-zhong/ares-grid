@@ -13,18 +13,32 @@
 
 	<mvc:annotation-driven />
 
-    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath:game-default.properties</value>
-            </list>
-        </property>
-        <property name="ignoreResourceNotFound" value="true"/>
-        <property name="ignoreUnresolvablePlaceholders" value="true"/>
-    </bean>
+	<bean
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:game-default.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+	<mvc:view-controller path="/" view-name="index" />
+		
+	<mvc:resources mapping="/resources/**" location="/web-resources/" />
 
- 	<context:component-scan base-package="com.wd.ares.db.service"/>
-    <context:component-scan base-package="com.wd.ares.controller"/>
-    <context:component-scan base-package="com.wd.ares.rpc"/>
+	<context:component-scan base-package="com.wd.ares.db.service" />
+	<context:component-scan base-package="com.wd.ares.controller" />
+	<context:component-scan base-package="com.wd.ares.rpc" />
+
+	<bean id="beetlConfig" class="org.beetl.ext.spring.BeetlGroupUtilConfiguration"
+		init-method="init">
+		<property name="root" value="WEB-INF/views/" />
+	</bean>
+
+	<bean id="viewResolver" class="org.beetl.ext.spring.BeetlSpringViewResolver">
+		<property name="contentType" value="text/html;charset=UTF-8"></property>
+		<property name="suffix" value=".html"></property>
+	</bean>
 
 </beans>
