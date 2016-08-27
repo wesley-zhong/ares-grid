@@ -24,12 +24,14 @@
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 	</bean>
 	<mvc:view-controller path="/" view-name="index" />
+	<mvc:view-controller path="/edit" view-name="editor" />
 		
 	<mvc:resources mapping="/resources/**" location="/web-resources/" />
+	<mvc:resources mapping="/data/**" location="/data/" />
 
 	<context:component-scan base-package="com.wd.ares.db.service" />
 	<context:component-scan base-package="com.wd.ares.controller" />
-	<context:component-scan base-package="com.wd.ares.rpc" />
+	<context:component-scan base-package="com.wd.ares.rpc"/>
 
 	<bean id="beetlConfig" class="org.beetl.ext.spring.BeetlGroupUtilConfiguration"
 		init-method="init">

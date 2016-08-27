@@ -1,0 +1,5 @@
+{ "total":25,
+  "page":1
+  "records":107,
+  "userdata": {"foo": "bar"},
+  "rows": [...] }
